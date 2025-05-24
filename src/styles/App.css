@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #e50914;
+  --primary-hover: #f6121d;
+  --secondary: #333;
+  --background: #141414;
+  --text-primary: #fff;
+  --text-secondary: #b3b3b3;
+}
+
+body {
+  @apply bg-[#141414] text-white font-sans antialiased;
+  margin: 0;
+  padding: 0;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Custom Utility Classes */
+.movie-card {
+  @apply relative overflow-hidden rounded-md transition-all duration-300;
+}
+
+.movie-card:hover {
+  @apply transform scale-105 shadow-xl z-10;
+}
+
+.movie-card .overlay {
+  @apply absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-4;
+}
+
+.movie-card:hover .overlay {
+  @apply opacity-100;
+}
+
+.content-carousel {
+  @apply flex overflow-x-auto py-4 space-x-4 snap-x scrollbar scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-900;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.hero-gradient {
+  @apply absolute inset-0 bg-gradient-to-t from-[#141414] via-[#141414]/70 to-transparent;
+}
+
+.btn-primary {
+  @apply bg-[#e50914] hover:bg-[#f6121d] text-white py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center;
+}
+
+.btn-secondary {
+  @apply bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center;
+}
+
+.glass-card {
+  @apply bg-white/10 backdrop-blur-sm rounded-lg border border-white/10;
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Loading animations */
+.skeleton {
+  @apply bg-gray-700 animate-pulse rounded;
+}
+
+.loading-spinner {
+  @apply w-10 h-10 border-4 border-[#e50914] border-t-transparent rounded-full animate-spin;
+}
+
+/* Video player styles */
+.video-player-container {
+  @apply w-full aspect-video bg-black relative overflow-hidden rounded-md;
+}
+
+.video-controls {
+  @apply absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent opacity-0 transition-opacity duration-300;
+}
+
+.video-player-container:hover .video-controls {
+  @apply opacity-100;
+}
